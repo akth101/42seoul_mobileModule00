@@ -12,6 +12,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  int flag = 0;
+  String displayText = "A simple text";
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.sizeOf(context);
@@ -34,7 +37,7 @@ class _MyAppState extends State<MyApp> {
             color: Colors.amber,
             child: Center(
               child: Text(
-                "A Simple text",
+                displayText,
                 style: TextStyle(
                   fontSize: screenWidth * 0.03,
                 ),
@@ -50,6 +53,9 @@ class _MyAppState extends State<MyApp> {
             child: TextButton(
               onPressed: () {
                 debugPrint("Button pressed");
+                setState(() {
+                  changeText();
+                });
               },
               child: Text(
                 "Click me",
@@ -62,5 +68,15 @@ class _MyAppState extends State<MyApp> {
         ],
       ),
     );
+  }
+
+  void changeText() {
+    if (flag == 0) {
+      flag = 1;
+      displayText = "Hello World";
+    } else {
+      flag = 0;
+      displayText = "A simple text";
+    }
   }
 }
