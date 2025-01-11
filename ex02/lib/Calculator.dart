@@ -25,10 +25,19 @@ class _CalculatorState extends State<Calculator> {
           children: [
             textField(expression, screenSize.height),
             textField(result, screenSize.height),
+            middlePadding(screenSize),
           ],
         ),
       ),
     );
+  }
+
+  Container middlePadding(Size screenSize) {
+    return Container(
+            width: double.infinity,
+            height: screenSize.height * 0.45,
+            color: Colors.amber,
+          );
   }
 
   Container textField(String data, double screenHeight) {
