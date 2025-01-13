@@ -14,8 +14,8 @@ class _CalculatorState extends State<Calculator> {
   String result = "0";
   @override
   Widget build(BuildContext context) {
-  final screenSize = MediaQuery.sizeOf(context);
-    
+    final screenSize = MediaQuery.sizeOf(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Calculator"),
@@ -26,18 +26,84 @@ class _CalculatorState extends State<Calculator> {
             textField(expression, screenSize.height),
             textField(result, screenSize.height),
             middlePadding(screenSize),
+            buttonField(screenSize),
           ],
         ),
       ),
     );
   }
 
+  Expanded buttonField(Size screenSize) {
+    return Expanded(
+            child: Column(
+              children: [
+                Expanded(
+                  child: Row(
+                    children: [
+                      Expanded(child: indivButton("5", screenSize)),
+                      Expanded(child: indivButton("5", screenSize)),
+                      Expanded(child: indivButton("5", screenSize)),
+                      Expanded(child: indivButton("5", screenSize)),
+                      Expanded(child: indivButton("5", screenSize)),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Row(
+                    children: [
+                      Expanded(child: indivButton("5", screenSize)),
+                      Expanded(child: indivButton("5", screenSize)),
+                      Expanded(child: indivButton("5", screenSize)),
+                      Expanded(child: indivButton("5", screenSize)),
+                      Expanded(child: indivButton("5", screenSize)),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Row(
+                    children: [
+                      Expanded(child: indivButton("5", screenSize)),
+                      Expanded(child: indivButton("5", screenSize)),
+                      Expanded(child: indivButton("5", screenSize)),
+                      Expanded(child: indivButton("5", screenSize)),
+                      Expanded(child: indivButton("5", screenSize)),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Row(
+                    children: [
+                      Expanded(child: indivButton("5", screenSize)),
+                      Expanded(child: indivButton("5", screenSize)),
+                      Expanded(child: indivButton("5", screenSize)),
+                      Expanded(child: indivButton("5", screenSize)),
+                      Expanded(child: indivButton("5", screenSize)),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+  }
+
+  GestureDetector indivButton(String text, Size screenSize) {
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Colors.teal[100],
+        child: Text(text),
+      ),
+    );
+  }
+
   Container middlePadding(Size screenSize) {
     return Container(
-            width: double.infinity,
-            height: screenSize.height * 0.45,
-            color: Colors.amber,
-          );
+      width: double.infinity,
+      height: screenSize.height * 0.4,
+      color: Colors.amber,
+    );
   }
 
   Container textField(String data, double screenHeight) {
@@ -57,7 +123,6 @@ class _CalculatorState extends State<Calculator> {
           ),
         ),
       ),
-      
     );
   }
 }
