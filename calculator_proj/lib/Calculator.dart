@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'CalcProvider.dart';
 
 class Calculator extends StatefulWidget {
   const Calculator({
@@ -10,29 +12,29 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
-  String expression = "0";
-  String result = "0";
 
-  @override
-  Widget build(BuildContext context) {
-    final screenSize = MediaQuery.sizeOf(context);
+@override
+Widget build(BuildContext context) {
+  final screenSize = MediaQuery.sizeOf(context);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Calculator"),
-      ),
-      body: Center(
+  return Scaffold(
+    appBar: AppBar(
+      title: const Text("Calculator"),
+    ),
+    body: Consumer<CalcProvider>(
+      builder: (context, calcProvider, child) => Center(
         child: Column(
           children: [
-            textField(expression, screenSize.height),
-            textField(result, screenSize.height),
+            textField(calcProvider.getExpression, screenSize.height),
+            textField(calcProvider.getResult, screenSize.height),
             middlePadding(screenSize),
             buttonField(screenSize),
           ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 
   Expanded buttonField(Size screenSize) {
     return Expanded(
@@ -77,7 +79,7 @@ class _CalculatorState extends State<Calculator> {
                 Expanded(child: indivButton("0", screenSize)),
                 Expanded(child: indivButton(".", screenSize)),
                 Expanded(child: indivButton("00", screenSize)),
-                Expanded(child: indivButton("=", screenSize)),
+                Expanded(child: specialButton("=", screenSize)),
                 Expanded(child: indivButton("", screenSize)),
               ],
             ),
@@ -92,6 +94,8 @@ class _CalculatorState extends State<Calculator> {
       onTap: () {
         if (text != "") {
           debugPrint("button pressed: $text");
+          final calcProvider = context.read<CalcProvider>();
+          calcProvider.addExpression(text);
         }
       },
       child: Container(
@@ -113,6 +117,14 @@ class _CalculatorState extends State<Calculator> {
       onTap: () {
         if (text != "") {
           debugPrint("button pressed: $text");
+        }
+          final calcProvider = context.read<CalcProvider>();
+        if (text == "AC") {
+            calcProvider.pressAC();
+        } else if (text == "C") {
+            calcProvider.pressC();
+        } else if (text == "=") {
+          calcProvider.pressEqual();
         }
       },
       child: Container(
