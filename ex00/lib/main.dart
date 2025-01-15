@@ -27,16 +27,17 @@ class _MyAppState extends State<MyApp> {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            width: screenWidth * 0.2,
-            height: screenHeight * 0.08,
+            width: screenWidth * 0.18,
+            height: screenHeight * 0.07,
             color: Colors.amber,
             child: Center(
               child: Text(
                 "A Simple text",
                 style: TextStyle(
-                  fontSize: screenWidth * 0.03,
+                  fontSize: screenWidth * 0.02,
                 ),
               ),
             ),
@@ -45,8 +46,8 @@ class _MyAppState extends State<MyApp> {
             height: 10,
           ),
           SizedBox(
-            width: screenWidth * 0.2,
-            height: screenHeight * 0.1,
+            width: screenWidth * 0.18,
+            height: screenHeight * 0.07,
             child: TextButton(
               onPressed: () {
                 debugPrint("Button pressed");
@@ -54,7 +55,7 @@ class _MyAppState extends State<MyApp> {
               child: Text(
                 "Click me",
                 style: TextStyle(
-                  fontSize: screenWidth * 0.03,
+                  fontSize: screenWidth * 0.02,
                 ),
               ),
             ),
