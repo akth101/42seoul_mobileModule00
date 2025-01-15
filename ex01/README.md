@@ -1,16 +1,3 @@
-# ex00
+# ex01
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+간단한 수준의 상태관리를 구현하는 과제입니다. 버튼을 누를 때마다 화면에 보이는 텍스트가 바뀌어야 합니다.
